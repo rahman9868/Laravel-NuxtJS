@@ -58,7 +58,7 @@ class RegisterController extends Controller
         return response()->json([
             'success' => false,
             'errors' => $validator->errors()
-        ]);
+        ], 420);
     }
     /**
      * Get a validator for an incoming registration request.

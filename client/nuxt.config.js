@@ -36,13 +36,40 @@ module.exports = {
   plugins: [
   ],
 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: 'auth/login', method: 'post',propertyName: 'token'
+          },
+          user: {
+            url: 'me', method: 'get', propertyName: 'data'
+          },
+          logout: 'logout', method: 'get'
+        }
+       }
+      },
+      redirect: {
+        login: 'auth/login',
+        home: '/' 
+      }
+  },
   /*
   ** Nuxt.js modules
   */
   modules: [
+    // Doc: https://github.com/nuxt-community/axios-module
+    '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+
+    '@nuxtjs/auth'
   ],
+
+  axios: {
+    baseURl: 'http://jwt-auth.test/api'
+  },
 
   /*
   ** Build configuration
@@ -51,6 +78,7 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    extractCss: true,
     extend(config, ctx) {
       
     }
