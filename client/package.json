@@ -1,7 +1,7 @@
 {
-  "name": "jwt-auth",
+  "name": "client",
   "version": "1.0.0",
-  "description": "My glorious Nuxt.js project",
+  "description": "My first-rate Nuxt.js project",
   "author": "rahman9868",
   "private": true,
   "scripts": {

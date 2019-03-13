@@ -1,6 +1,6 @@
-# jwt-auth
+# client
 
-> My glorious Nuxt.js project
+> My first-rate Nuxt.js project
 
 ## Build Setup
 

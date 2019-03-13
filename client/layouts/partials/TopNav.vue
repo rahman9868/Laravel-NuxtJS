@@ -13,7 +13,7 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
             <li>
-                <nuxt-link class="nav-link" to="/dashboard">Login</nuxt-link>
+                <nuxt-link class="nav-link" to="/auth/login">Login</nuxt-link>
             </li>
             <li>
                 <nuxt-link class="nav-link" to="/auth/register">Register</nuxt-link>
@@ -21,7 +21,7 @@
         </b-navbar-nav>
     </b-collapse>    
     </div>
-      
+
   </b-navbar>
 </div>
 </template>

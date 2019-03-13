@@ -24,6 +24,12 @@ module.exports = {
   */
   loading: { color: '#fff' },
 
+  router: {
+    middleware: [
+      'clearValidationErrors'
+    ]
+  },
+
   /*
   ** Global CSS
   */
@@ -34,6 +40,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    './plugins/mixins/validation',
+    './plugins/axios'
   ],
 
   auth: {
@@ -41,35 +49,40 @@ module.exports = {
       local: {
         endpoints: {
           login: {
-            url: 'auth/login', method: 'post',propertyName: 'token'
+            url: 'auth/login', method: 'post', propertyName: 'token'
           },
           user: {
             url: 'me', method: 'get', propertyName: 'data'
           },
-          logout: 'logout', method: 'get'
+          logout: {
+            method: 'get',
+            url: 'auth/logout', method: 'get'
+          }
         }
-       }
-      },
-      redirect: {
-        login: 'auth/login',
-        home: '/' 
       }
+    },
+    redirect: {
+      login: '/auth/login',
+      home: '/'
+    }
   },
+
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    // Doc: https://github.com/nuxt-community/axios-module
-    '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
+ modules: [
+  // Doc: https://github.com/nuxt-community/axios-module#usage
+  "@nuxtjs/axios",
+  // Doc: https://bootstrap-vue.js.org/docs/
+  "bootstrap-vue/nuxt",
+  
+  "@nuxtjs/auth"
+],
 
-    '@nuxtjs/auth'
-  ],
-
-  axios: {
-    baseURl: 'http://jwt-auth.test/api'
-  },
+axios: {
+  // See https://github.com/nuxt-community/axios-module#options
+  baseURL: 'http://jwt-auth.test/api'
+},
 
   /*
   ** Build configuration
@@ -78,7 +91,8 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
-    extractCss: true,
+
+   extractCSS: true,
     extend(config, ctx) {
       
     }
