@@ -41,6 +41,7 @@ module.exports = {
   */
   plugins: [
     './plugins/mixins/validation',
+    './plugins/mixins/user',
     './plugins/axios'
   ],
 
@@ -64,7 +65,10 @@ module.exports = {
     redirect: {
       login: '/auth/login',
       home: '/'
-    }
+    },
+    plugins: [
+      './plugins/auth'
+    ]
   },
 
   /*

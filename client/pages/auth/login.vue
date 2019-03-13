@@ -30,6 +30,7 @@
 
 <script>
 export default {
+    middleware: 'guest',
     data() {
         return {
             form: {
@@ -45,7 +46,7 @@ export default {
 
             await this.$auth.login({data: this.form});
 
-            this.$router.push({name: 'index'});
+            this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/');
         }
 
     }
